@@ -13,12 +13,29 @@ class ColorSwitchViewController: UIViewController {
     }
 
     @IBAction func redTapped() {
+        var Lat : String = ","
+        var Long : String = ","
         NSLog("Tapped")
         self.toggle()
 //        colorService.send(colorName: "red")
        let currentDate = NSDate()
         NSLog("%@", currentDate);
-        colorService.send(phoneNumber: 32, Lat: "123", Long: "321", timeStamp: "18Jan2017")
+//        let locMgr: INTULocationManager = INTULocationManager.sharedInstance()
+//        locMgr.requestLocation(withDesiredAccuracy: INTULocationAccuracy.block,
+//                               timeout: 10.0,
+//                               delayUntilAuthorized: true,
+//                               block: {(currentLocation: CLLocation?, achievedAccuracy: INTULocationAccuracy, status: INTULocationStatus) -> Void in
+//                                if status == INTULocationStatus.success {
+//                                    Lat = "\(String(describing: currentLocation?.coordinate.latitude))"
+//                                    Long = "\(String(describing: currentLocation?.coordinate.longitude))"
+//                                }
+//                                else {
+//                                    Lat = "Error getting location"
+//                                    Long = "Error getting location"
+//                                }
+//        })
+        
+//        colorService.send(phoneNumber: 32, Lat: Lat, Long: Long, timeStamp: "1505653281")
     }
 //
 //    @IBAction func yellowTapped() {
