@@ -12,7 +12,8 @@ import MultipeerConnectivity
 protocol ColorServiceManagerDelegate {
 
     func connectedDevicesChanged(manager : ColorServiceManager, connectedDevices: [String])
-    func colorChanged(manager : ColorServiceManager, colorString: String)
+//    func colorChanged(manager : ColorServiceManager, colorString: String)
+    func propagateMessage(manager : ColorServiceManager, messageString: String)
 
 }
 
@@ -30,7 +31,8 @@ class ColorServiceManager : NSObject {
     var delegate : ColorServiceManagerDelegate?
 
     lazy var session : MCSession = {
-        let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .required)
+//        let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .required)
+        let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
         session.delegate = self
         return session
     }()
@@ -48,18 +50,55 @@ class ColorServiceManager : NSObject {
         self.serviceBrowser.startBrowsingForPeers()
     }
 
-    func send(colorName : String) {
-        NSLog("%@", "sendColor: \(colorName) to \(session.connectedPeers.count) peers")
-
+//    func send(colorName : String) {
+//        NSLog("%@", "sendColor: \(colorName) to \(session.connectedPeers.count) peers")
+//
+//        if session.connectedPeers.count > 0 {
+//            do {
+//                try self.session.send(colorName.data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
+//            }
+//            catch let error {
+//                NSLog("%@", "Error for sending: \(error)")
+//            }
+//        }
+//
+//    }
+    
+    func send(phoneNumber : Int, Lat: String , Long : String, timeStamp : String) {
+//        NSLog("%@", "sendColor: \(colorName) to \(session.connectedPeers.count) peers")
+        
         if session.connectedPeers.count > 0 {
             do {
-                try self.session.send(colorName.data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
+                let seperator: String = "a"
+                let messageData = NSMutableData()
+                let score: String = (phoneNumber as NSNumber).stringValue
+//                let phoneNumberdata = NSData(bytes: &score, length: MemoryLayout<Int>.size)
+            
+                messageData.append(score.data(using: .utf8)!)
+                messageData.append(seperator.data(using: .utf8)!)
+                NSLog("Data appended: %@", messageData)
+                
+                messageData.append(Lat.data(using: .utf8)!)
+                messageData.append(seperator.data(using: .utf8)!)
+                 NSLog("Data appended: %@", messageData)
+                
+                messageData.append(Long.data(using: .utf8)!)
+                messageData.append(seperator.data(using: .utf8)!)
+                 NSLog("Data appended: %@", messageData)
+                
+//                var tempDate: NSDate = timeStamp;
+//                let dateData = Data(bytes: &tempDate, count: MemoryLayout<TimeInterval>.size)
+//                messageData.append(dateData as Data)
+                messageData.append(timeStamp.data(using: .utf8)!)
+                 NSLog("Data appended: %@", messageData)
+                
+                try self.session.send(messageData as Data, toPeers: session.connectedPeers, with: .reliable)
             }
             catch let error {
                 NSLog("%@", "Error for sending: \(error)")
             }
         }
-
+        
     }
 
     deinit {
@@ -108,10 +147,17 @@ extension ColorServiceManager : MCSessionDelegate {
             session.connectedPeers.map{$0.displayName})
     }
 
+//    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+//        NSLog("%@", "didReceiveData: \(data)")
+//        let str = String(data: data, encoding: .utf8)!
+//        self.delegate?.colorChanged(manager: self, colorString: str)
+//    }
+    
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         NSLog("%@", "didReceiveData: \(data)")
         let str = String(data: data, encoding: .utf8)!
-        self.delegate?.colorChanged(manager: self, colorString: str)
+        NSLog("String format: %@", str);
+        self.delegate?.propagateMessage(manager: self, messageString: str)
     }
 
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
