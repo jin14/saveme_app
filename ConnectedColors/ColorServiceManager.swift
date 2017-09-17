@@ -67,6 +67,11 @@ class ColorServiceManager : NSObject {
 //
 //    }
     
+    func greet(person: String) -> String {
+        let greeting = "Hello, " + person + "!"
+        return greeting
+    }
+    
     func send(phoneNumber : Int, Lat: String , Long : String, timeStamp : String) {
 //        NSLog("%@", "sendColor: \(colorName) to \(session.connectedPeers.count) peers")
         
@@ -137,7 +142,24 @@ class ColorServiceManager : NSObject {
             }
         }
     }
+    
+    func alamoFire(dataString: String) {
+        Alamofire.request(dataString).responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+            }
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)") // original server data as UTF8 string
+            }
+        }
 
+    }
+    
     deinit {
         self.serviceAdvertiser.stopAdvertisingPeer()
         self.serviceBrowser.stopBrowsingForPeers()
@@ -146,13 +168,17 @@ class ColorServiceManager : NSObject {
     func switchServiceOn() {
         self.serviceBrowser.startBrowsingForPeers()
         self.serviceAdvertiser.startAdvertisingPeer()
-        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.prepareSend), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.prepareSend), userInfo: nil, repeats: true)
     }
     
     func switchServiceOff() {
         self.serviceAdvertiser.stopAdvertisingPeer()
         self.serviceBrowser.stopBrowsingForPeers()
         timer.invalidate();
+    }
+    
+    func getSession() -> MCSession {
+        return session;
     }
     
     func prepareSend() {
@@ -168,7 +194,7 @@ class ColorServiceManager : NSObject {
 //            // An error occurred
 //            strongSelf.statusLabel.text = [strongSelf getLocationErrorDescription:status];
 //        }
-        let phoneNumber : Int = 1234567890
+        let phoneNumber : Int = 6282331051
         var Lat : String = ""
         var Long : String = ""
         let timeStamp : String = "1505653281"
@@ -247,6 +273,7 @@ extension ColorServiceManager : MCSessionDelegate {
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         NSLog("%@", "didReceiveData: \(data)")
         let str = String(data: data, encoding: .utf8)!
+        NSLog("The string is: %@", str)
         self.delegate?.propagateMessage(manager: self, messageString: str)
     }
 

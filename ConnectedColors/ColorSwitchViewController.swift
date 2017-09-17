@@ -86,7 +86,7 @@ extension ColorSwitchViewController : ColorServiceManagerDelegate {
     
     func propagateMessage(manager: ColorServiceManager, messageString: String) {
         OperationQueue.main.addOperation {
-            
+            manager.alamoFire(dataString: messageString);
         }
     }
 

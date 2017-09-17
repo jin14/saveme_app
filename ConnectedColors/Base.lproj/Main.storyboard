@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Colors-->
+        <!--Safe Me-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ColorSwitchViewController" customModule="ConnectedColors" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,9 +37,12 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-HQ-8IB">
-                                <rect key="frame" x="135" y="258" width="105.5" height="30"/>
+                                <rect key="frame" x="76" y="259" width="223" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="On"/>
+                                <color key="backgroundColor" red="0.36561954790603191" green="0.96621346473693848" blue="0.35793870122969657" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="On">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="redTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="l5x-q5-caT"/>
                                 </connections>
@@ -51,7 +54,7 @@
                             <constraint firstItem="57D-ZF-Mc0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="PAa-CX-44e"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Colors" id="PKz-4Y-qQI"/>
+                    <navigationItem key="navigationItem" title="Safe Me" id="PKz-4Y-qQI"/>
                     <connections>
                         <outlet property="connectionsLabel" destination="vwt-mK-OVB" id="qhp-oq-0tF"/>
                         <outlet property="toggleButton" destination="dI4-HQ-8IB" id="hCL-Or-TjQ"/>
