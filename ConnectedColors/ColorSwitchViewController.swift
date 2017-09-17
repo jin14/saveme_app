@@ -36,10 +36,11 @@ class ColorSwitchViewController: UIViewController {
         UIView.animate(withDuration: 0) {
             if (self.toggleButton.titleLabel?.text == "On") {
                 self.toggleButton.setTitle("Off",for: .normal)
-                NSLog("%@", self.toggleButton.titleLabel?.text ?? "default")
+                self.colorService.switchServiceOn();
             }
             else {
                 self.toggleButton.setTitle("On",for: .normal)
+                self.colorService.switchServiceOff();
             }
         }
     }
@@ -67,9 +68,9 @@ extension ColorSwitchViewController : ColorServiceManagerDelegate {
 //    }
     
     func propagateMessage(manager: ColorServiceManager, messageString: String) {
-//        OperationQueue.main.addOperation {
-//            
-//        }
+        OperationQueue.main.addOperation {
+            
+        }
     }
 
 }

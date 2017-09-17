@@ -18,7 +18,9 @@ protocol ColorServiceManagerDelegate {
 }
 
 class ColorServiceManager : NSObject {
-
+    
+    var timer : Timer!;
+    
     // Service type must be a unique string, at most 15 characters long
     // and can contain only ASCII lowercase letters, numbers and hyphens.
     private let ColorServiceType = "example-color"
@@ -42,12 +44,12 @@ class ColorServiceManager : NSObject {
         self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: ColorServiceType)
 
         super.init()
-
+        
         self.serviceAdvertiser.delegate = self
-        self.serviceAdvertiser.startAdvertisingPeer()
+//        self.serviceAdvertiser.startAdvertisingPeer()
 
         self.serviceBrowser.delegate = self
-        self.serviceBrowser.startBrowsingForPeers()
+//        self.serviceBrowser.startBrowsingForPeers()
     }
 
 //    func send(colorName : String) {
@@ -76,21 +78,17 @@ class ColorServiceManager : NSObject {
             
                 messageData.append(score.data(using: .utf8)!)
                 messageData.append(seperator.data(using: .utf8)!)
-                NSLog("Data appended: %@", messageData)
                 
                 messageData.append(Lat.data(using: .utf8)!)
                 messageData.append(seperator.data(using: .utf8)!)
-                 NSLog("Data appended: %@", messageData)
                 
                 messageData.append(Long.data(using: .utf8)!)
                 messageData.append(seperator.data(using: .utf8)!)
-                 NSLog("Data appended: %@", messageData)
                 
 //                var tempDate: NSDate = timeStamp;
 //                let dateData = Data(bytes: &tempDate, count: MemoryLayout<TimeInterval>.size)
 //                messageData.append(dateData as Data)
                 messageData.append(timeStamp.data(using: .utf8)!)
-                 NSLog("Data appended: %@", messageData)
                 
                 try self.session.send(messageData as Data, toPeers: session.connectedPeers, with: .reliable)
             }
@@ -106,6 +104,51 @@ class ColorServiceManager : NSObject {
         self.serviceBrowser.stopBrowsingForPeers()
     }
 
+    func switchServiceOn() {
+        self.serviceBrowser.startBrowsingForPeers()
+        self.serviceAdvertiser.startAdvertisingPeer()
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.prepareSend), userInfo: nil, repeats: true)
+    }
+    
+    func switchServiceOff() {
+        self.serviceAdvertiser.stopAdvertisingPeer()
+        self.serviceBrowser.stopBrowsingForPeers()
+        timer.invalidate();
+    }
+    
+    func prepareSend() {
+//        if (status == INTULocationStatusSuccess) {
+//            // achievedAccuracy is at least the desired accuracy (potentially better)
+//            strongSelf.statusLabel.text = [NSString stringWithFormat:@"Location request successful! Current Location:\n%@", currentLocation];
+//        }
+//        else if (status == INTULocationStatusTimedOut) {
+//            // You may wish to inspect achievedAccuracy here to see if it is acceptable, if you plan to use currentLocation
+//            strongSelf.statusLabel.text = [NSString stringWithFormat:@"Location request timed out. Current Location:\n%@", currentLocation];
+//        }
+//        else {
+//            // An error occurred
+//            strongSelf.statusLabel.text = [strongSelf getLocationErrorDescription:status];
+//        }
+        let phoneNumber : Int = 1234567890
+        var Lat : String = "123"
+        var Long : String = "321"
+        let timeStamp : String = "1Jan2017"
+        let locMgr: INTULocationManager = INTULocationManager.sharedInstance()
+        locMgr.requestLocation(withDesiredAccuracy: INTULocationAccuracy.block,
+                               timeout: 10.0,
+                               delayUntilAuthorized: true,
+                               block: {(currentLocation: CLLocation?, achievedAccuracy: INTULocationAccuracy, status: INTULocationStatus) -> Void in
+                                if status == INTULocationStatus.success {
+                                    Lat = "\(String(describing: currentLocation?.coordinate.latitude))"
+                                    Long = "\(String(describing: currentLocation?.coordinate.longitude))"
+                                }
+                                else {
+                                    Lat = "Error getting location"
+                                    Long = "Error getting location"
+                                }
+        })
+        self.send(phoneNumber: 098, Lat: Lat, Long: Long, timeStamp: "1Jan2017")
+    }
 }
 
 extension ColorServiceManager : MCNearbyServiceAdvertiserDelegate {

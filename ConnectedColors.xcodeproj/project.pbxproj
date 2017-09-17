@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE983FFD1F6E9AEF0083CB46 /* INTULocationManager in Resources */ = {isa = PBXBuildFile; fileRef = AE983FFC1F6E9AEF0083CB46 /* INTULocationManager */; };
+		AE9840091F6E9B0A0083CB46 /* INTUHeadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9840001F6E9B0A0083CB46 /* INTUHeadingRequest.m */; };
+		AE98400A1F6E9B0A0083CB46 /* INTULocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9840021F6E9B0A0083CB46 /* INTULocationManager.m */; };
+		AE98400B1F6E9B0A0083CB46 /* INTULocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9840051F6E9B0A0083CB46 /* INTULocationRequest.m */; };
+		AE98400C1F6E9B0A0083CB46 /* INTURequestIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9840081F6E9B0A0083CB46 /* INTURequestIDGenerator.m */; };
 		BF6F13F81E4E58C90018D56E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6F13F71E4E58C90018D56E /* AppDelegate.swift */; };
 		BF6F13FA1E4E58C90018D56E /* ColorSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6F13F91E4E58C90018D56E /* ColorSwitchViewController.swift */; };
 		BF6F13FD1E4E58C90018D56E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6F13FB1E4E58C90018D56E /* Main.storyboard */; };
@@ -16,6 +21,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE983FFC1F6E9AEF0083CB46 /* INTULocationManager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = INTULocationManager; path = "../LocationManager-master/LocationManager/INTULocationManager"; sourceTree = "<group>"; };
+		AE983FFF1F6E9B0A0083CB46 /* INTUHeadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = INTUHeadingRequest.h; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTUHeadingRequest.h"; sourceTree = "<group>"; };
+		AE9840001F6E9B0A0083CB46 /* INTUHeadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = INTUHeadingRequest.m; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTUHeadingRequest.m"; sourceTree = "<group>"; };
+		AE9840011F6E9B0A0083CB46 /* INTULocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = INTULocationManager.h; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTULocationManager.h"; sourceTree = "<group>"; };
+		AE9840021F6E9B0A0083CB46 /* INTULocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = INTULocationManager.m; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTULocationManager.m"; sourceTree = "<group>"; };
+		AE9840031F6E9B0A0083CB46 /* INTULocationManager+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "INTULocationManager+Internal.h"; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTULocationManager+Internal.h"; sourceTree = "<group>"; };
+		AE9840041F6E9B0A0083CB46 /* INTULocationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = INTULocationRequest.h; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTULocationRequest.h"; sourceTree = "<group>"; };
+		AE9840051F6E9B0A0083CB46 /* INTULocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = INTULocationRequest.m; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTULocationRequest.m"; sourceTree = "<group>"; };
+		AE9840061F6E9B0A0083CB46 /* INTULocationRequestDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = INTULocationRequestDefines.h; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTULocationRequestDefines.h"; sourceTree = "<group>"; };
+		AE9840071F6E9B0A0083CB46 /* INTURequestIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = INTURequestIDGenerator.h; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTURequestIDGenerator.h"; sourceTree = "<group>"; };
+		AE9840081F6E9B0A0083CB46 /* INTURequestIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = INTURequestIDGenerator.m; path = "../../LocationManager-master/LocationManager/INTULocationManager/INTURequestIDGenerator.m"; sourceTree = "<group>"; };
+		AE98400D1F6E9B9E0083CB46 /* ConnectedColors-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConnectedColors-Bridging-Header.h"; sourceTree = "<group>"; };
 		BF6F13F41E4E58C90018D56E /* ConnectedColors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectedColors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6F13F71E4E58C90018D56E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF6F13F91E4E58C90018D56E /* ColorSwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwitchViewController.swift; sourceTree = "<group>"; };
@@ -37,9 +54,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE983FFE1F6E9AF80083CB46 /* INTULocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				AE983FFF1F6E9B0A0083CB46 /* INTUHeadingRequest.h */,
+				AE9840001F6E9B0A0083CB46 /* INTUHeadingRequest.m */,
+				AE9840011F6E9B0A0083CB46 /* INTULocationManager.h */,
+				AE9840021F6E9B0A0083CB46 /* INTULocationManager.m */,
+				AE9840031F6E9B0A0083CB46 /* INTULocationManager+Internal.h */,
+				AE9840041F6E9B0A0083CB46 /* INTULocationRequest.h */,
+				AE9840051F6E9B0A0083CB46 /* INTULocationRequest.m */,
+				AE9840061F6E9B0A0083CB46 /* INTULocationRequestDefines.h */,
+				AE9840071F6E9B0A0083CB46 /* INTURequestIDGenerator.h */,
+				AE9840081F6E9B0A0083CB46 /* INTURequestIDGenerator.m */,
+			);
+			name = INTULocationManager;
+			sourceTree = "<group>";
+		};
 		BF6F13EB1E4E58C90018D56E = {
 			isa = PBXGroup;
 			children = (
+				AE983FFC1F6E9AEF0083CB46 /* INTULocationManager */,
 				BF6F13F61E4E58C90018D56E /* ConnectedColors */,
 				BF6F13F51E4E58C90018D56E /* Products */,
 			);
@@ -59,10 +94,12 @@
 				BF6F13F71E4E58C90018D56E /* AppDelegate.swift */,
 				BF6F13F91E4E58C90018D56E /* ColorSwitchViewController.swift */,
 				BF6F140B1E4E5B660018D56E /* ColorServiceManager.swift */,
+				AE98400D1F6E9B9E0083CB46 /* ConnectedColors-Bridging-Header.h */,
 				BF6F13FB1E4E58C90018D56E /* Main.storyboard */,
 				BF6F13FE1E4E58C90018D56E /* Assets.xcassets */,
 				BF6F14001E4E58C90018D56E /* LaunchScreen.storyboard */,
 				BF6F14031E4E58C90018D56E /* Info.plist */,
+				AE983FFE1F6E9AF80083CB46 /* INTULocationManager */,
 			);
 			path = ConnectedColors;
 			sourceTree = "<group>";
@@ -130,6 +167,7 @@
 				BF6F14021E4E58C90018D56E /* LaunchScreen.storyboard in Resources */,
 				BF6F13FF1E4E58C90018D56E /* Assets.xcassets in Resources */,
 				BF6F13FD1E4E58C90018D56E /* Main.storyboard in Resources */,
+				AE983FFD1F6E9AEF0083CB46 /* INTULocationManager in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE98400B1F6E9B0A0083CB46 /* INTULocationRequest.m in Sources */,
+				AE98400A1F6E9B0A0083CB46 /* INTULocationManager.m in Sources */,
+				AE9840091F6E9B0A0083CB46 /* INTUHeadingRequest.m in Sources */,
 				BF6F13FA1E4E58C90018D56E /* ColorSwitchViewController.swift in Sources */,
+				AE98400C1F6E9B0A0083CB46 /* INTURequestIDGenerator.m in Sources */,
 				BF6F13F81E4E58C90018D56E /* AppDelegate.swift in Sources */,
 				BF6F140C1E4E5B660018D56E /* ColorServiceManager.swift in Sources */,
 			);
@@ -270,6 +312,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hello321;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jinweitan/Documents/ConnectedColors/ConnectedColors/ConnectedColors-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -285,6 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hello321;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jinweitan/Documents/ConnectedColors/ConnectedColors/ConnectedColors-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
